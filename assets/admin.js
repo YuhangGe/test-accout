@@ -2,6 +2,8 @@ var $ = KISSY.all;
 
 //当前编辑的账户
 var curAccout=null;
+//当前单选的id，这个用来实现可以取消选择任意个人账户
+var curRadioId=null;
 
 $.log=function(msg){
 	if(console)	
@@ -76,8 +78,10 @@ function renderList(){
 }
 function addPersonList(id,name,describe,selected){
 	$('<li id="per-acc-'+id+'">')
-		.html('<a title="'+(describe==null?'':describe)+'" href="javascript:editLabel('+id+',\'个人账户\');">'+name+'<input id="radio-'+id+'" class="radio" type="radio" onchange="checkPerson('+id+');" '+(selected==true?'checked':'')+'/></a>')
+		.html('<a title="'+(describe==null?'':describe)+'" href="javascript:editLabel('+id+',\'个人账户\');">'+name+'<input id="radio-'+id+'" class="radio" type="radio" onclick="checkPerson('+id+');" '+(selected==true?'checked':'')+'/></a>')
 		.appendTo($('#person-accouts'));
+	if(selected==true)
+		curRadioId=id;
 }
 function addProjectList(id,name,describe,selected){
 	$('<li id="pro-acc-'+id+'">')
@@ -117,13 +121,22 @@ function editLabel(id,type){
 
 
 function checkPerson(id){
-	$.log("id:"+id);
-	for(var i=0;i<TEST_ACCOUTS.length;i++){
-		if(TEST_ACCOUTS[i].type=="person"){
-			//$.log(TEST_ACCOUTS[i].id==id);
-			TEST_ACCOUTS[i].selected=(TEST_ACCOUTS[i].id==id);
-			$('#radio-'+TEST_ACCOUTS[i].id).attr('checked',TEST_ACCOUTS[i].id==id);
-		}	
+	if(curRadioId==id){
+		for(var i=0;i<TEST_ACCOUTS.length;i++){
+			if(TEST_ACCOUTS[i].type=="person"){
+				TEST_ACCOUTS[i].selected=false;
+			}	
+		}
+		$('#radio-'+id).attr('checked',false);
+		curRadioId=null;
+	}else{
+		for(var i=0;i<TEST_ACCOUTS.length;i++){
+			if(TEST_ACCOUTS[i].type=="person"){
+				TEST_ACCOUTS[i].selected=(TEST_ACCOUTS[i].id==id);
+				$('#radio-'+TEST_ACCOUTS[i].id).attr('checked',TEST_ACCOUTS[i].id==id);
+			}	
+		}
+		curRadioId=id;
 	}
 	refreshCookie();
 }
@@ -315,7 +328,7 @@ function refreshCookie(){
 		if(TEST_ACCOUTS[i].selected==true)
 			c_arr.push(TEST_ACCOUTS[i].id);
 	}
-	setCookie("test_accouts",c_arr.join(","),10);
+	setCookie("test_accouts",c_arr.join(","),10,".taobao.net");
 }
 
 
