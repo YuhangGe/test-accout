@@ -165,7 +165,8 @@ a:hover {
 
 #mask{
 	background: black;
-	opacity: 0.6;
+	opacity: 0.5;
+	filter:alpha(opacity=50);  
 	position: absolute;
 	left: 0px;
 	top: 0px;
@@ -210,4 +211,5 @@ a:hover {
 	 cursor: default;
 	 float: right;
 	 opacity: 0;
+	 filter:alpha(opacity=0);  
 }
