@@ -10,6 +10,11 @@ if(!preg_match('/^\d+(,\d+)*$/',$_COOKIE['test_accouts'])){
 	exit();
 }
 
+$call_back=null;
+if(!empty($_REQUEST['callback']))
+	$callback=$_REQUEST['callback'];
+
+
 $coo_accouts=explode(',', $_COOKIE['test_accouts']);
 
 
@@ -24,7 +29,10 @@ foreach($coo_accouts as $id){
 		$output[]=$ea;
 }
 
-echo 'var TEST_ACCOUTS='.json_encode($output).";";
+if($callback==null)
+	echo 'var TEST_ACCOUTS='.json_encode($output).";";
+else
+	echo $callback.'('.json_encode($output).');';
 
 mysql_close($db_connection);
 ?>
