@@ -1,0 +1,213 @@
+.grid td div {
+	position: relative;
+	left: -5px;
+}
+.icon-expand {
+	background: url("icon.png") no-repeat scroll -40px 0 transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 13px;
+	margin: 0 6px;
+	width: 13px;
+}
+#header {
+	width: 950px;
+	height: 90px;
+	margin: auto;
+	background: url("toy.jpg") no-repeat scroll 95% 0 transparent;
+	border-bottom: 1px solid #AACCEE;
+	overflow: hidden;
+}
+#header h1 {
+	color: #6A6A6A;
+	font-size: 35px;
+	margin: 15px;
+	cursor: pointer;
+}
+.footer {
+	width: 950px;
+	margin: auto;
+	border-top: 1px dotted #DDDDDD;
+	clear: both;
+	color: #888888;
+	padding: 30px 0px 120px;
+	text-align: center;
+}
+.col-main {
+	width: 950px;
+	margin: auto;
+	min-height: 650px;
+}
+.col-left {
+	padding: 0px 10px;
+	border: 1px solid #AACCEE;
+	border-top: none;
+	float: left;
+	width: 190px;
+}
+.sub-title {
+	border-bottom: 1px dotted #CCCCCC;
+	font: bold 16px "Microsoft YaHei";
+	padding: 8px 0;
+}
+.col-right {
+	float: left;
+	width: 738px;
+}
+.list {
+	padding: 8px 0 8px 18px;
+}
+.list li {
+	background: url('bullet.gif') no-repeat 0px 9px;
+	padding-left: 14px;
+	margin: 5px;
+		overflow: hidden;
+}
+.list li b {
+	background: url('msg.png') no-repeat -1px -201px;
+	float: right;
+	height: 14px;
+	width: 14px;
+	margin-top: 5px;
+}
+a {
+	font-size: 14px;
+	color: #0044CC;
+	text-decoration: none;
+
+}
+a:hover {
+	color: #FF6600;
+	text-decoration: underline;
+}
+.btn-expand {
+	background: url("icon.png") no-repeat scroll -60px 0 transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 13px;
+	margin: 6px 0px;
+	width: 13px;
+	float: right;
+}
+.btn-expand-2 {
+	background: url("icon.png") no-repeat scroll -40px 0 transparent;
+}
+.check {
+	float: right;
+	margin: 6px 0px;
+}
+.radio{
+	float:right;
+	margin: 6px 0px;
+}
+.btn-add {
+	font-size: 10px;
+	margin-left: 5px;
+	position: relative;
+	top: -3px;
+}
+#s-crumbs {
+	background: url("bg-repeatx.png") repeat-x scroll 0 -7px #E5F0FF;
+	border-bottom: 1px solid #AACCEE;
+	line-height: 18px;
+	overflow: hidden;
+	padding: 5px 10px;
+	font: bold 16px "Microsoft YaHei";
+}
+#s-crumbs .s-tip {
+	background: url("crumbs.png") no-repeat scroll 100% 50% transparent;
+	margin-right: 4px;
+	padding: 0 12px 0 0;
+}
+.cell-extra {
+	border-left: 1px solid #CCCCCC;
+}
+.info {
+	padding: 10px;
+}
+.info p {
+	font-size: 13px;
+}
+.info a {
+	font-size: 12px;
+	float: right;
+}
+.grid {
+	width: auto;
+	padding: 0px 10px 10px;
+}
+.grid a {
+	font-size: 12px;
+}
+.edit {
+	font-size: 13px;
+	width: 100%;
+	height: 100%;
+	border: 1px solid green;
+	padding: 1px 2px 1px;
+	margin-right:10px;
+}
+.row-add td {
+	padding-left: 5px;
+}
+.row-edit {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 90%;
+	display: none;
+	margin: 0px;
+}
+
+
+
+
+#mask{
+	background: black;
+	opacity: 0.6;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display:none;
+	z-index: 9999;
+}
+#add-dialog{
+	position: absolute;
+	top:200px;
+	width:400px;
+	height:400px;
+	z-index: 10000;
+	padding: 10px;
+	display: none;
+}
+#add-dialog h3{
+	font-size: 15px;
+	font-family: "Microsoft YaHei";
+}
+#add-dialog p{
+	font-size: 14px;
+}
+#add-dialog .btn{
+	float: right;
+	margin-left: 10px;
+	padding: 1px 3px;
+	font-size: 13px;
+}
+
+
+#edit-content{
+	display: none;
+}
+#welcome-info{
+	padding: 10px;
+}
+#welcome-info p{
+	font-size: 14px;
+}
+
+#hidden-del{
+	 cursor: default;
+	 float: right;
+	 opacity: 0;
+}
