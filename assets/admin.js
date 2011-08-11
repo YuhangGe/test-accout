@@ -76,12 +76,12 @@ function renderList(){
 }
 function addPersonList(id,name,describe,selected){
 	$('<li id="per-acc-'+id+'">')
-		.html('<a title="'+describe+'" href="javascript:editLabel('+id+',\'个人账户\');">'+name+'<input id="radio-'+id+'" class="radio" type="radio" onchange="checkPerson('+id+');" '+(selected==true?'checked':'')+'/></a>')
+		.html('<a title="'+(describe==null?'':describe)+'" href="javascript:editLabel('+id+',\'个人账户\');">'+name+'<input id="radio-'+id+'" class="radio" type="radio" onchange="checkPerson('+id+');" '+(selected==true?'checked':'')+'/></a>')
 		.appendTo($('#person-accouts'));
 }
 function addProjectList(id,name,describe,selected){
 	$('<li id="pro-acc-'+id+'">')
-		.html('<a  title="'+describe+'" href="javascript:editLabel('+id+',\'项目账户\');">'+name+'<input class="check" type="checkbox" onchange="checkProject('+id+',event);" '+(selected==true?'checked':'')+'/></a>')
+		.html('<a  title="'+(describe==null?'':describe)+'" href="javascript:editLabel('+id+',\'项目账户\');">'+name+'<input class="check" type="checkbox" onchange="checkProject('+id+',event);" '+(selected==true?'checked':'')+'/></a>')
 		.appendTo($('#project-accouts'));
 }
 
@@ -92,11 +92,12 @@ function editLabel(id,type){
 		return;
 	}
 	
-	$('#s-crumbs').html('').append($('<span class="s-tip">').html(type))
+	$('#s-crumbs').html('').append($('<span class="s-tip"></span>').html(type))
 		.append($('<span>').html(curAccout.name))
-		.append($('<span id="hidden-del">').html("删除").on("dblclick",delLabel));
-		
-	$('#label-describe').html(curAccout.describe);
+		.append($('<span id="hidden-del"></span>').html("删除").on("dblclick",delLabel));
+	
+	
+	$('#label-describe').html(curAccout.describe==null?'&nbsp':curAccout.describe);
 	$('#label-describe-edit').hide();
 	$('#edit-add-name').val('');
 	$('#edit-add-pwd').val('');
@@ -128,11 +129,15 @@ function checkPerson(id){
 }
 
 function insertAccout(acc,before){
-	$('<tr id="row-'+acc.id+'" class="row">').html(
-			'<td ><div><span id="row-name-'+acc.id+'">'+acc.name+'</span><input id="edit-name-'+acc.id+'" class="edit row-edit" value="'+acc.name+'"/></div></td><td><div><span id="row-pwd-'+acc.id+'">'
-			+acc.password+'</span><input id="edit-pwd-'+acc.id+'" class="edit row-edit" value="'+acc.password+'"/></div></td><td><div><span id="row-desc-'+acc.id+'">'
-			+acc.describe+'</span><textarea id="edit-desc-'+acc.id+'" class="edit row-edit" >'+acc.describe+'</textarea></div></td>'
-			+'<td class="cell-extra"><a id="edit-'+acc.id+'" href="javascript:editRow('+acc.id+');">编辑</a></td><td class="cell-extra"><a id="del-'+acc.id+'" href="javascript:delRow('+acc.id+');">删除</a></td>')
+	
+	$('<tr id="row-'+acc.id+'" class="row">')
+		.append($('<td>').html('<div><span id="row-name-'+acc.id+'">'+acc.name+'</span><input id="edit-name-'+acc.id+'" class="edit row-edit" value="'+acc.name+'"/></div>'))
+		.append($('<td>').html('<div><span id="row-pwd-'+acc.id+'">'+acc.password+'</span><input id="edit-pwd-'+acc.id+'" class="edit row-edit" value="'+acc.password+'"/></div>'))
+		.append($('<td>').html('<div><span id="row-desc-'+acc.id+'">'+(acc.describe==null?'&nbsp':acc.describe)+'</span><textarea id="edit-desc-'+acc.id+'" class="edit row-edit" >'+(acc.describe==null?'':acc.describe)+'</textarea></div>'))
+		.append($('<td class="cell-extra">')
+			.html('<a id="edit-'+acc.id+'" href="javascript:editRow('+acc.id+');">编辑</a>'))
+		.append($('<td class="cell-extra">')
+			.html('<a id="del-'+acc.id+'" href="javascript:delRow('+acc.id+');">删除</a>'))
 		.insertBefore(before)
 		.on('mouseover', function() {
 			$(this).addClass('row-hover');
