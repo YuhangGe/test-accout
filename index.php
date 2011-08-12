@@ -32,9 +32,13 @@ mysql_close($db_connection);
 		<link rel="stylesheet" href="assets/style.css" type="text/css" />
 		<!-- 渲染所有账户信息到js中 ，页面完全在前端使用js控制-->
 		<script type="text/javascript">
-var TEST_ACCOUTS=<?php echo json_encode($output);?>;</script>
+			var TEST_ACCOUTS=<?php echo json_encode($output);?>;
+		</script>
 		<!-- Kissy -->
 		<script type="text/javascript" src="http://a.tbcdn.cn/s/kissy/1.2.0/kissy.js"></script>
+		<!--通过flash存储数据的组件fookie-->
+		<script type="text/javascript" src="assets/fookie-0.2-min.js"></script>
+		
 		<script type="text/javascript" src="assets/admin.js"></script>
 	</head>
 	<body>
@@ -109,48 +113,7 @@ var TEST_ACCOUTS=<?php echo json_encode($output);?>;</script>
 								</tr>
 							</thead>
 							<tbody id="table-body">
-								<tr class="row" id="row-37">
-									<td>
-									<div>
-										<span id="row-name-37">alice</span>
-										<input value="alice" class="edit row-edit" id="edit-name-37">
-									</div></td><td>
-									<div>
-										<span id="row-pwd-37">abe</span>
-										<input value="abe" class="edit row-edit" id="edit-pwd-37">
-									</div></td><td>
-									<div>
-										<span id="row-desc-37">买家账户</span>										<textarea class="edit row-edit" id="edit-desc-37">买家账户</textarea>
-</div>									</td><td class="cell-extra"><a href="javascript:editRow(37);" id="edit-37">编辑</a></td><td class="cell-extra"><a href="javascript:delRow(37);" id="del-37">删除</a></td>
-								</tr>
-								<tr class="row" id="row-38">
-									<td>
-									<div>
-										<span id="row-name-38">daisy</span>
-										<input value="daisy" class="edit row-edit" id="edit-name-38">
-									</div></td><td>
-									<div>
-										<span id="row-pwd-38">good</span>
-										<input value="good" class="edit row-edit" id="edit-pwd-38">
-									</div></td><td>
-									<div>
-										<span id="row-desc-38">null</span>										<textarea class="edit row-edit" id="edit-desc-38">null</textarea>
-</div>									</td><td class="cell-extra"><a href="javascript:editRow(38);" id="edit-38">编辑</a></td><td class="cell-extra"><a href="javascript:delRow(38);" id="del-38">删除</a></td>
-								</tr>
-								<tr class="row" id="row-39">
-									<td>
-									<div>
-										<span id="row-name-39">yini</span>
-										<input value="yini" class="edit row-edit" id="edit-name-39">
-									</div></td><td>
-									<div>
-										<span id="row-pwd-39">abraham</span>
-										<input value="abraham" class="edit row-edit" id="edit-pwd-39">
-									</div></td><td>
-									<div>
-										<span id="row-desc-39"> </span>										<textarea class="edit row-edit" id="edit-desc-39">     </textarea>
-</div>									</td><td class="cell-extra"><a href="javascript:editRow(39);" id="edit-39">编辑</a></td><td class="cell-extra"><a href="javascript:delRow(39);" id="del-39">删除</a></td>
-								</tr>
+
 								<tr id="row-add" class="row">
 									<td>
 									<div>

@@ -36,8 +36,11 @@ function getAllAccouts() {
 	$rtn = array();
 	$query = "SELECT id,name,type,`describe` FROM labels;";
 	$result = mysql_query($query);
-	if(!$result)
+	if(!$result){
+		echo "wrong";
 		return $rtn;
+	}
+		
 	while(($id_list = mysql_fetch_row($result))) {
 		$rtn[] = array(
 			'id' => $id_list[0], 
